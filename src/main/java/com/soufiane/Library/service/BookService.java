@@ -145,4 +145,7 @@ public class BookService {
                 ,totalInventoryValue,averagePrice,mostExpensiveBook);
     }
 
+    public List<Book> getBooksByCategory(String categoryName) {
+        return bookRepo.findByCategory_CategoryNameIgnoreCase(categoryName);
+    }
 }

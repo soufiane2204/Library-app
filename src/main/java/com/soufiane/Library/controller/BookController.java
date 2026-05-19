@@ -18,6 +18,7 @@ public class BookController {
     private BookService service;
 
 
+
     @GetMapping("/books/page")
     public ResponseEntity<Page<Book>> getBooksByPage(
             @RequestParam(defaultValue = "0") int page,
@@ -74,6 +75,10 @@ public class BookController {
     public ResponseEntity<String> deleteBookById(@PathVariable int id){
         service.deleteBookById(id);
         return new ResponseEntity<>("Book deleted successfully", HttpStatus.OK) ;
+    }
+    @GetMapping("/search/books/category")
+    public ResponseEntity<List<Book>> getBooksByCategory(@RequestParam String name) {
+        return new ResponseEntity<>(service.getBooksByCategory(name), HttpStatus.OK);
     }
 
 
